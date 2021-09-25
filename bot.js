@@ -3,11 +3,6 @@ var event = new KeyboardEvent('keydown', {
 	ctrlKey: true
 })
 
-function sleep(ms) {
-  const wakeUpTime = Date.now() + ms;
-  while (Date.now() < wakeUpTime) {}
-}
-
 function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
@@ -24,16 +19,10 @@ function getCookie(name) {
         end = dc.length;
         }
     }
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
     return decodeURI(dc.substring(begin + prefix.length, end));
 } 
-
-const delCookie = function delCookie(){
-  var removing = browser.cookies.remove({
-    url: 'https://popcat.click/',
-    name: "bot"
-  });
-  removing.then(onRemoved, onError);
-}
 
 
 setInterval(function(){
@@ -43,8 +32,7 @@ setInterval(function(){
     		document.dispatchEvent(event);
 		}
     		else {
-		delCookie()
-		sleep(1000)
+		cookieStore.delete('bot')
 		window.location.href = 'https://popcat.click/';
 		}
 	}
