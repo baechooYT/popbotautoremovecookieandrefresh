@@ -1,3 +1,8 @@
+var event = new KeyboardEvent('keydown', {
+	key: 'g',
+	ctrlKey: true
+});
+
 function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
