@@ -21,14 +21,14 @@ function getCookie(name) {
 
 
 setInterval(function(){
-	for (i = 0; i < 100; i++) {
+	for (i = 0; i < 100; i++) {		
 		var myCookie = getCookie("bot");
     		if (myCookie == null) {
-    		document.cookie = 'COOKIE_NAME=; Max-Age=0; path=/; domain=' + location.host;
-		location.reload();
+    		document.dispatchEvent(event);
 		}
     		else {
-    		document.dispatchEvent(event);
+		document.cookie = 'COOKIE_NAME=; Max-Age=0; path=/; domain=' + location.host;
+		location.reload();
 		}
 	}
 }, 0);
