@@ -1,19 +1,24 @@
-var event = new KeyboardEvent('keydown', {
-	key: 'g',
-	ctrlKey: true
-});
-
-function getCookie(cookieName){
-    var cookieValue=null;
-    if(document.cookie){
-        var array=document.cookie.split((escape(cookieName)+'='));
-        if(array.length >= 2){
-            var arraySub=array[1].split(';');
-            cookieValue=unescape(arraySub[0]);
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+        end = dc.length;
         }
     }
-    return cookieValue;
-}
+    // because unescape has been deprecated, replaced with decodeURI
+    //return unescape(dc.substring(begin + prefix.length, end));
+    return decodeURI(dc.substring(begin + prefix.length, end));
+} 
+
 
 setInterval(function(){
 	for (i = 0; i < 100; i++) {
