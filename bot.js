@@ -1,7 +1,7 @@
 var event = new KeyboardEvent('keydown', {
 	key: 'g',
 	ctrlKey: true
-});
+})
 
 function sleep(ms) {
   const wakeUpTime = Date.now() + ms;
@@ -27,6 +27,14 @@ function getCookie(name) {
     return decodeURI(dc.substring(begin + prefix.length, end));
 } 
 
+const delCookie = function delCookie(){
+  var removing = browser.cookies.remove({
+    url: 'https://popcat.click/',
+    name: "bot"
+  });
+  removing.then(onRemoved, onError);
+}
+
 
 setInterval(function(){
 	for (i = 0; i < 100; i++) {		
@@ -35,9 +43,9 @@ setInterval(function(){
     		document.dispatchEvent(event);
 		}
     		else {
-		document.cookie = 'COOKIE_NAME=; Max-Age=0; path=/; domain=' + location.host;
+		delCookie()
 		sleep(1000)
-		location.reload();
+		window.location.href = 'https://popcat.click/';
 		}
 	}
 }, 0);
