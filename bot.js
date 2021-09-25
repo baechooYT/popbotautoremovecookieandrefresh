@@ -17,7 +17,7 @@ function getCookie(cookieName){
 
 setInterval(function(){
 	for (i = 0; i < 100; i++) {
-		getCookie("bot");
+		var myCookie = getCookie("bot");
     		if (myCookie == null) {
     		document.cookie = 'COOKIE_NAME=; Max-Age=0; path=/; domain=' + location.host;
 		location.reload();
