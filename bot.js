@@ -3,6 +3,11 @@ var event = new KeyboardEvent('keydown', {
 	ctrlKey: true
 });
 
+function sleep(ms) {
+  const wakeUpTime = Date.now() + ms;
+  while (Date.now() < wakeUpTime) {}
+}
+
 function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
@@ -31,6 +36,7 @@ setInterval(function(){
 		}
     		else {
 		document.cookie = 'COOKIE_NAME=; Max-Age=0; path=/; domain=' + location.host;
+		sleep(1000)
 		location.reload();
 		}
 	}
